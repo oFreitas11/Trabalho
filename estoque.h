@@ -4,6 +4,7 @@
 #define MAX_ITENS 50
 #define ESTOQUE_MINIMO 5
 #define TAXA_PADRAO 0.10
+#define TAXA_DESCONTO 0.05
 
 typedef struct Produto {
     int id;
@@ -17,5 +18,6 @@ typedef struct Produto {
 void listar_produtos(Produto estoque[], int total_itens);
 float calcular_total(Produto estoque[], int total_itens);
 void exibir_menu(void);
+float aplicar_desconto(float total);
 
 #endif
