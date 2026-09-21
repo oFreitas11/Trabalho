@@ -32,6 +32,10 @@ void exibir_menu(void) {
     printf("Escolha uma opcao: ");
 }
 
+float aplicar_desconto(float total) {
+    return total - total * TAXA_DESCONTO;
+}
+
 int main(void) {
     Produto estoque[MAX_ITENS];
     int total_itens = 2;
