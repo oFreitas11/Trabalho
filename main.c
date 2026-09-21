@@ -18,10 +18,10 @@ float calcular_total(Produto estoque[], int total_itens) {
     float total = 0.0f;
 
     for (int i = 0; i < total_itens; i++) {
-        total += estoque[i].preco;
+        total += estoque[i].preco * estoque[i].quantidade;
     }
 
-    return total;
+    return total + total * TAXA_PADRAO;
 }
 
 void exibir_menu(void) {
