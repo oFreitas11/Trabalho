@@ -6,8 +6,10 @@ void listar_produtos(Produto estoque[], int total_itens) {
     printf("\n=== PRODUTOS EM ESTOQUE ===\n");
 
     for (int i = 0; i < total_itens; i++) {
-        printf("ID: %d | Nome: %s | Quantidade: %d | Preco: R$ %.2f\n",
+        printf("ID: %d | Codigo de barras: %s | Categoria: %s | Nome: %s | Quantidade: %d | Preco: R$ %.2f\n",
                estoque[i].id,
+               estoque[i].codigo_barras,
+               estoque[i].categoria,
                estoque[i].nome,
                estoque[i].quantidade,
                estoque[i].preco);
@@ -27,13 +29,10 @@ float calcular_total(Produto estoque[], int total_itens) {
 void exibir_menu(void) {
     printf("\n=== CONTROLE DE ESTOQUE ===\n");
     printf("1 - Listar produtos\n");
-    printf("2 - Exibir total em estoque\n");
+    printf("2 - Exibir total em estoque (com tributos)\n");
+    printf("3 - Exibir total com desconto a vista\n");
     printf("0 - Sair\n");
     printf("Escolha uma opcao: ");
-}
-
-float aplicar_desconto(float total) {
-    return total - total * TAXA_DESCONTO;
 }
 
 int main(void) {
@@ -69,6 +68,13 @@ int main(void) {
                        calcular_total(estoque, total_itens));
                 break;
 
+            case 3: {
+                float total = calcular_total(estoque, total_itens);
+                printf("\nTotal a vista com desconto: R$ %.2f\n",
+                       aplicar_desconto(total));
+                break;
+            }
+
             case 0:
                 printf("\nEncerrando o sistema...\n");
                 break;
@@ -79,4 +85,8 @@ int main(void) {
     } while (opcao != 0);
 
     return 0;
+}
+
+float aplicar_desconto(float total) {
+    return total - total * TAXA_DESCONTO;
 }
